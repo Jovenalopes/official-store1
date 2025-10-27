@@ -1,71 +1,380 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prosta Peak - Presell</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: url('fundo-final.jpg') no-repeat center center/cover;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: #fff;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProstaVive | Support for Healthy Weight Loss with Natural Ingredients</title>
+
+  <!-- Global site tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17485822231"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17485822231');
+  </script>
+
+  <!-- ======= STYLES (unificados) ======= -->
+  <style>
+    /* Reset / base */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Poppins, Arial, sans-serif; }
+
+    html, body { height: 100%; background-color: #f8fafc; color: #1e293b; }
+
+    /* --- Primeiro @keyframes pulse (MANTIDO) --- */
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 6px 35px rgba(0, 123, 255, 0.5);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
     }
-    .container {
-        background: rgba(0, 0, 0, 0.55);
-        padding: 20px;
-        border-radius: 12px;
-        max-width: 90%;
+
+    /* Hero background */
+    .hero {
+      height: 100vh;
+      background: url("https://uploads.onecompiler.io/43v37pq3s/442h2r79d/presell-computador1.png") no-repeat center top;
+      background-size: cover;
+      background-attachment: fixed;
     }
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 10px;
+    @media (max-width: 768px) {
+      .hero {
+        background: url("https://uploads.onecompiler.io/43v37pq3s/442h2r79d/presell-celular1.png") no-repeat center top;
+        background-size: cover;
+        background-attachment: scroll;
+      }
     }
-    p {
-        font-size: 1.1rem;
-        margin-bottom: 20px;
+
+    /* Cookie Banner */
+    .cookie-banner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      z-index: 9999;
+      animation: pulse 2.5s infinite ease-in-out;
     }
-    .btn {
-        display: inline-block;
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #fff;
-        border: 2px solid #fff;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: all 0.3s ease;
+
+    .cookie-banner h2 { margin-top: 0; font-size: 20px; }
+    .cookie-banner p { font-size: 15px; line-height: 1.4; margin: 15px 0; }
+
+    .cookie-banner a {
+      display: block;
+      margin: 8px auto;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 250px;
     }
-    .btn:hover {
-        background: rgba(255, 255, 255, 0.2);
+    .btn-accept { background-color: #007BFF; color: white; font-weight: bold; }
+    .btn-decline { background-color: #ccc; color: black; font-weight: bold; }
+
+    @media (max-width: 480px) {
+      .cookie-banner { padding: 15px; }
+      .cookie-banner h2 { font-size: 18px; }
+      .cookie-banner p { font-size: 14px; }
+      .cookie-banner a { font-size: 14px; padding: 10px; }
     }
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 1.5rem;
-        }
-        p {
-            font-size: 1rem;
-        }
+
+    /* Certificates */
+    .certificates { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+    .certificate { flex: 1 1 200px; max-width:250px; text-align:center; }
+    .certificate img { max-width:120px; height:auto; display:block; margin:0 auto 10px; }
+    .certificate h3 { font-size:18px; margin:10px 0; }
+    .certificate p { font-size:14px; line-height:1.4; }
+
+    /* Reviews */
+    .reviews { max-width:1100px; margin:0 auto; padding:24px; }
+    .reviews__grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px; }
+    .review-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 8px 20px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px; }
+    .review-card__head { display:flex; align-items:center; gap:12px; }
+    .review-card__avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #f2f2f2; }
+    .review-card__name { font-weight:700; font-size:16px; line-height:1.1; }
+    .review-card__verified { display:inline-block; font-size:12px; color:#2e7d32; background:#e8f5e9; padding:2px 8px; border-radius:999px; margin-top:4px; }
+    .stars { display:inline-flex; gap:2px; }
+    .star { font-size:18px; line-height:1; color:#ffc107; }
+    .review-card__text { font-size:14px; color:#333; }
+    .review-card__date { margin-top:auto; font-size:12px; color:#7a7a7a; }
+
+    @media (prefers-color-scheme: dark) {
+      .review-card { background:#121212; box-shadow:0 8px 20px rgba(0,0,0,.25); }
+      .review-card__text, .review-card__name, .review-card__date { color:#eaeaea; }
+      .review-card__verified { color:#a5d6a7; background:#1b3b22; }
     }
-</style>
+
+    .reviews-section { text-align:center; margin:30px 0; }
+    .reviews-section img { max-width:100%; height:auto; }
+
+    /* Product info / layout */
+    header {
+      background: linear-gradient(135deg, #0a2342, #1e3a8a);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 6px solid #fbbf24;
+    }
+    header h1 { font-size:2.4em; font-weight:700; margin-bottom:10px; }
+    header p { font-size:1.1em; font-weight:400; }
+
+    section.content { max-width:1100px; margin:50px auto; padding:0 20px; }
+
+    h2 { color:#0a2342; margin-bottom:20px; font-size:1.8em; border-left:6px solid #fbbf24; padding-left:10px; }
+    p { margin-bottom:15px; font-size:1.05em; }
+
+    .cta { text-align:center; margin:50px 0; }
+    /* CTA usa a mesma animação pulse (o primeiro) */
+    .cta a {
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      color: #0a2342;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 40px;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(251, 191, 36, 0.5);
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    .cta a:hover { background: #facc15; transform: scale(1.05); }
+
+    .benefits, .ingredients { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:25px; margin-top:20px; }
+    .card {
+      background:white; padding:25px; border-radius:15px; border:2px solid #e2e8f0; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s;
+    }
+    .card:hover { transform: translateY(-5px); border-color:#fbbf24; }
+
+    .testimonials { background: linear-gradient(135deg, #e0f2fe, #eff6ff); padding:50px 20px; border-radius:15px; margin-top:40px; }
+    .testimonial { background:white; padding:20px; border-radius:10px; border-left:5px solid #fbbf24; margin-bottom:20px; box-shadow:0 3px 10px rgba(0,0,0,0.08); }
+
+    .alert { background:#fff7ed; border-left:8px solid #f59e0b; padding:15px; border-radius:10px; font-weight:600; color:#92400e; margin:30px 0; text-align:center; }
+
+    footer { background:#0a2342; color:white; text-align:center; padding:40px 20px; font-size:0.9em; border-top:4px solid #fbbf24; }
+
+    .timer { font-size:1.3em; color:#b45309; font-weight:bold; text-align:center; margin-top:10px; }
+    .highlight { color:#f59e0b; font-weight:700; }
+
+    /* RESPONSIVE adjustments */
+    @media (max-width:768px) {
+      header { padding:40px 15px; }
+      header h1 { font-size:2em; }
+      header p { font-size:1em; }
+      h2 { font-size:1.5em; }
+      .cta a { font-size:1.1em; padding:14px 30px; }
+      .card { padding:20px; }
+      section.content { margin:30px auto; }
+    }
+    @media (max-width:480px) {
+      header h1 { font-size:1.8em; }
+      .cta a { width:90%; font-size:1em; }
+      .alert { font-size:0.95em; }
+      .testimonial { font-size:0.95em; }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Imagem de fundo -->
+  <div class="hero"></div>
 
-<div class="container">
-    <h1>Prosta Peak: High Quality</h1>
-    <p>The only supplement with over 20 carefully selected ingredients, developed to support prostate health effectively and safely.</p>
-    <a href="https://prostapeak.com/?hopId=05de575f-8240-4b85-a9e5-1fe56fcff48b" class="btn">LEARN MORE</a>
-</div>
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <h2>Cookie Settings</h2>
+    <p>
+      We use cookies and similar technologies to help personalize content, tailor and measure ads, 
+      and provide a better experience. By clicking accept, you agree to this as described in our Cookie Policy.
+    </p>
+    <a href="https://primehub.rf.gd/zxrl5w" class="btn-accept">Yes, I accept</a>
+    <a href="https://primehub.rf.gd/zxrl5w" class="btn-decline">No, I do not accept</a>
+  </div>
 
+  <!-- Certificates -->
+  <section class="certificates" aria-label="Certificados">
+    <div class="certificate">
+      <img src="made-in-usa.png" alt="Made in USA">
+      <h3>Made in USA</h3>
+      <p>Our Sleep Lean is proudly manufactured in the United States of America.</p>
+    </div>
+
+    <div class="certificate">
+      <img src="gmp.png" alt="GMP Certified">
+      <h3>GMP Certified</h3>
+      <p>Product certified according to Good Manufacturing Practice standards.</p>
+    </div>
+
+    <div class="certificate">
+      <img src="fda.png" alt="FDA Approved">
+      <h3>FDA Approved</h3>
+      <p>Formulated in an FDA-registered facility and compliant with all FDA regulations.</p>
+    </div>
+
+    <div class="certificate">
+      <img src="natural.png" alt="100% Natural">
+      <h3>100% Natural</h3>
+      <p>Made with natural ingredients, non-GMO, and gluten-free.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" aria-label="Customer reviews">
+    <div class="reviews__grid">
+
+      <!-- Review 1 -->
+      <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review-card__head">
+          <img src="customer1.jpg" alt="Photo of Sophia P." class="review-card__avatar" loading="lazy">
+          <div>
+            <div class="review-card__name" itemprop="author">– Robert M.</div>
+            <span class="review-card__verified">Verified buyer</span>
+          </div>
+        </div>
+        <div class="stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-card__text" itemprop="reviewBody">
+          “I was waking up 4-5 times a night to use the bathroom. After using ProstaVive for a month, I’m down to once per night, sometimes none! It has truly changed my life.” 
+        </p>
+        <time class="review-card__date" datetime="2025-06-18">18 Jun 2025</time>
+      </article>
+
+      <!-- Review 2 -->
+      <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review-card__head">
+          <img src="customer2.jpg" alt="Photo of William R." class="review-card__avatar" loading="lazy">
+          <div>
+            <div class="review-card__name" itemprop="author">William R.</div>
+            <span class="review-card__verified">Verified buyer</span>
+          </div>
+        </div>
+        <div class="stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-card__text" itemprop="reviewBody">
+          “I’ve been using ProstaVive for a few weeks now, and I’m honestly amazed at how much it has improved my prostate health. I was dealing with frequent nighttime trips to the bathroom and a constant feeling of urgency during the day. After just a short time on ProstaVive, those issues have significantly reduced.”
+        </p>
+        <time class="review-card__date" datetime="2025-07-02">02 Jul 2025</time>
+      </article>
+
+      <!-- Review 3 -->
+      <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review-card__head">
+          <img src="customer3.jpg" alt="Photo of Amelia S." class="review-card__avatar" loading="lazy">
+          <div>
+            <div class="review-card__name" itemprop="author">David P.</div>
+            <span class="review-card__verified">Verified buyer</span>
+          </div>
+        </div>
+        <div class="stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-card__text" itemprop="reviewBody">
+          “My life had changed. My energy returned. I felt younger. I was more confident. And let’s just say... things improved in the romance department too.”
+        </p>
+        <time class="review-card__date" datetime="2025-05-27">27 May 2025</time>
+      </article>
+
+      <!-- Review 4 -->
+      <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review-card__head">
+          <img src="customer4.jpg" alt="Photo of Michael M." class="review-card__avatar" loading="lazy">
+          <div>
+            <div class="review-card__name" itemprop="author">Michael M.</div>
+            <span class="review-card__verified">Verified buyer</span>
+          </div>
+        </div>
+        <div class="stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-card__text" itemprop="reviewBody">
+          “I started taking ProstaVive two months ago, and my nightly bathroom trips went from five to just one. I finally sleep through the night!”
+        </p>
+        <time class="review-card__date" datetime="2025-08-09">09 Aug 2025</time>
+      </article>
+
+    </div>
+
+    <p style="font-size:12px;color:#7a7a7a;margin-top:8px;">*Results may vary from person to person.</p>
+  </section>
+
+  <div class="reviews-section">
+    <img src="reviewstop.png" alt="Customer Reviews">
+  </div>
+
+  <!-- Product information (unificada) -->
+  <section class="content" aria-label="Informações do Produto">
+    <header>
+      <h1>ProstaVive 💪</h1>
+      <p>The Natural Secret for Male Balance and Well-Being</p>
+    </header>
+
+    <section>
+      <h2>🌿 Rediscover Your Natural Vitality</h2>
+      <p><span class="highlight">ProstaVive</span> is a premium supplement specially developed to support male well-being and vitality. Its 100% natural formula combines plant extracts and essential minerals, offering daily support for a more balanced and confident lifestyle.</p>
+    </section>
+
+    <section>
+      <h2>💥 Exclusive Benefits</h2>
+      <div class="benefits">
+        <div class="card">✅ Promotes a feeling of well-being and lightness</div>
+        <div class="card">✅ Daily support for vitality and energy</div>
+        <div class="card">✅ Natural and certified ingredients</div>
+        <div class="card">✅ Produced in FDA and GMP facilities</div>
+        <div class="card">✅ 60-day satisfaction guarantee</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🌱 Selected Natural Ingredients</h2>
+      <div class="ingredients">
+        <div class="card"><strong>Saw Palmetto:</strong> traditionally used to support male balance.</div>
+        <div class="card"><strong>Nettle Root:</strong> contributes to energy and comfort.</div>
+        <div class="card"><strong>African Pygeum:</strong> plant known for natural body support.</div>
+        <div class="card"><strong>Zinc + Selenium:</strong> essential minerals supporting health and vitality.</div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <a href="#buy">🔥 I WANT MY PROSTAVIVE NOW</a>
+    </div>
+
+    <h3>Safe and Transparent</h3>
+    <p>This product is intended as a supplement to a balanced lifestyle. Results may vary. Consult a healthcare professional before starting any new supplement.</p>
+
+    <h3>Where to Buy</h3>
+    <p>ProstaVive is available only through the official website to ensure authenticity and quality.</p>
+  </section>
+
+  <hr>
+
+  <p style="text-align:center; font-size:13px; margin-top:30px;">
+    <a href="privacy/privacy.html" style="color:#666;">Privacy Policy</a> | 
+    <a href="terms.html" style="color:#666;">Terms of Service</a>
+    <a href="/contact" style="color:#666; margin-left:8px;">Contact</a>
+  </p>
+
+  <footer>
+    <p>&copy; ProstaVive — All rights reserved.</p>
+  </footer>
 </body>
 </html>
