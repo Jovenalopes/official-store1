@@ -144,20 +144,51 @@
     h2 { color:#0a2342; margin-bottom:20px; font-size:1.8em; border-left:6px solid #fbbf24; padding-left:10px; }
     p { margin-bottom:15px; font-size:1.05em; }
 
-    .cta { text-align:center; margin:50px 0; }
-    /* CTA usa a mesma animação pulse (o primeiro) */
-    .cta a {
-      background: linear-gradient(90deg, #fbbf24, #f59e0b);
-      color: #0a2342;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2em;
-      padding: 15px 40px;
-      border-radius: 50px;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(251, 191, 36, 0.5);
-      display: inline-block;
-      animation: pulse 2s infinite;
+   /* ===== BOTÃO AZUL ESTILO PROSTAVIVE ===== */
+.cta a {
+  background: linear-gradient(90deg, #0072CE, #0056A8);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: 15px 40px;
+  border-radius: 50px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 114, 206, 0.5);
+  display: inline-block;
+  animation: pulse-blue 2s infinite;
+}
+
+/* Efeito hover (passar o mouse) */
+.cta a:hover {
+  background: linear-gradient(90deg, #0056A8, #0072CE);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
+}
+
+/* Animação de pulsação azul */
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 114, 206, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 114, 206, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 114, 206, 0);
+  }
+/* Responsivo para celular */
+@media (max-width: 600px) {
+  .cta a,
+  .button,
+  .order-btn,
+  .cta-btn {
+    width: 90%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 0;
+  }
+
     }
     .cta a:hover { background: #facc15; transform: scale(1.05); }
 
