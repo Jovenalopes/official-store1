@@ -13,12 +13,13 @@
     gtag('js', new Date());
     gtag('config', 'AW-17485822231');
   </script>  
-<!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
-<link rel="shortcut icon" href="./favicon.png" type="image/png">
-<link rel="manifest" href="./site.webmanifest">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="shortcut icon" href="./favicon.png" type="image/png">
+  <link rel="manifest" href="./site.webmanifest">
  
   <!-- ======= STYLES (unificados) ======= -->
   <style>
@@ -145,67 +146,61 @@
     p { margin-bottom:15px; font-size:1.05em; }
 
    /* ===== BOTÃO AZUL ESTILO PROSTAVIVE ===== */
-.cta a {
-  background: linear-gradient(90deg, #0072CE, #0056A8);
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.2em;
-  padding: 15px 40px;
-  border-radius: 50px;
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0, 114, 206, 0.5);
-  display: inline-block;
-  animation: pulse-blue 2s infinite;
-}
-
-/* Efeito hover (passar o mouse) */
-.cta a:hover {
-  background: linear-gradient(90deg, #0056A8, #0072CE);
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
-}
-
-/* Animação de pulsação azul */
-@keyframes pulse-blue {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 114, 206, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(0, 114, 206, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 114, 206, 0);
-  }
-/* Responsivo para celular */
-@media (max-width: 600px) {
-  .cta a,
-  .button,
-  .order-btn,
-  .cta-btn {
-    width: 90%;
-    text-align: center;
-    font-size: 1rem;
-    padding: 15px 0;
-  }
-  .cta {
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  margin: 20px 0; /* adiciona espaço acima e abaixo */
-}
-
-.cta a {
-  background-color: #004aad;
-  color: #fff;
-  font-weight: bold;
-  padding: 15px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  transition: background 0.3s ease;
-}
+    .cta {
+      display: flex;
+      justify-content: center; /* centraliza horizontalmente em todas as larguras */
+      margin: 20px 0; /* adiciona espaço acima e abaixo */
     }
+
+    .cta a {
+      background: linear-gradient(90deg, #0072CE, #0056A8);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 40px;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 114, 206, 0.5);
+      display: inline-block;
+      animation: pulse-blue 2s infinite;
+      text-align: center;
+    }
+
+    /* Efeito hover (passar o mouse) */
+    .cta a:hover {
+      background: linear-gradient(90deg, #0056A8, #0072CE);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 114, 206, 0.6);
+    }
+
+    /* Animação de pulsação azul */
+    @keyframes pulse-blue {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 114, 206, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(0, 114, 206, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 114, 206, 0);
+      }
+    }
+
+    /* Responsivo para celular */
+    @media (max-width: 600px) {
+      .cta a,
+      .button,
+      .order-btn,
+      .cta-btn {
+        width: 90%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 15px 0;
+      }
+      /* .cta já está definido fora do media, por isso não precisamos redeclarar o display aqui */
+    }
+
     .cta a:hover { background: #facc15; transform: scale(1.05); }
 
     .benefits, .ingredients { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:25px; margin-top:20px; }
