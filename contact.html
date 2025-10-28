@@ -60,17 +60,37 @@
       background: #0056b3;
     }
 
+    /* Back link styled as button */
     .back-link {
       display: block;
       text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
+      margin-top: 18px;
+      font-size: 15px;
       color: #007BFF;
       text-decoration: none;
+      border: 2px solid #007BFF;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      transition: background 0.2s, color 0.2s;
     }
 
     .back-link:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      background: #007BFF;
+      color: #fff;
+    }
+
+    /* Small helper text link (optional) */
+    .back-small {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #666;
     }
   </style>
 </head>
@@ -89,7 +109,46 @@
 
       <button type="submit">Send</button>
     </form>
-    <a href="/" class="https://jovenalopes.github.io/official-store1/">Back to Home</a>
+
+    <!-- Back button: tenta voltar no histórico; se não houver, redireciona para "/" -->
+    <a href="/" id="backHome" class="back-link" aria-label="Back to homepage (will go back if possible)">
+      ← Back to Home
+    </a>
+
+    <!-- Texto auxiliar (opcional) -->
+    <span class="back-small">Or close this window to return to the site.</span>
   </div>
+
+  <script>
+    (function() {
+      const backLink = document.getElementById('backHome');
+
+      // Se o usuário tiver vindo de outra página do mesmo domínio, usar history.back()
+      backLink.addEventListener('click', function(event) {
+        // Se não existir referrer, permita o link normal (irá para "/")
+        // Se existir e for do mesmo host, tentar history.back()
+        const ref = document.referrer;
+        if (ref) {
+          try {
+            const refUrl = new URL(ref);
+            if (refUrl.host === location.host) {
+              event.preventDefault();
+              // volta uma página no histórico
+              history.back();
+              // se após 500ms o histórico não avançou (por segurança), fallback para "/"
+              setTimeout(function() {
+                if (location.pathname === window.location.pathname) {
+                  location.href = '/';
+                }
+              }, 500);
+            }
+          } catch (e) {
+            // se URL inválida, deixa o comportamento padrão
+          }
+        }
+        // se não houver referrer, segue o href="/" normalmente
+      });
+    })();
+  </script>
 </body>
 </html>
