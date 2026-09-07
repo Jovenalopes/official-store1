@@ -48,8 +48,15 @@ header.preview-header p{margin:8px 0 0;font-size:clamp(13px,2.4vw,14.5px);color:
 .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,24,.15) 0%,rgba(10,14,24,.55) 100%);z-index:0}
 .hero > *{position:relative;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);color:var(--ink);padding:8px 16px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:18px;box-shadow:var(--sh-sm)}
-.video-container{width:100%;max-width:780px;aspect-ratio:16/9;margin-bottom:24px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg)}
+.video-container{width:100%;max-width:780px;aspect-ratio:16/9;margin-bottom:24px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);position:relative;background:#0b1220;cursor:pointer}
 .video-container iframe{width:100%;height:100%;border:none;display:block}
+.video-container .video-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video-container .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
+.video-container:hover .play-btn{transform:translate(-50%,-50%) scale(1.06)}
+.video-container .play-btn svg{margin-left:4px}
+.hero-proof{max-width:560px;background:rgba(255,255,255,.96);color:var(--ink);border-radius:var(--r-md);padding:14px 20px;font-size:13.5px;line-height:1.5;box-shadow:var(--sh-md);margin-top:20px;text-align:left;display:flex;gap:12px;align-items:flex-start}
+.hero-proof .stars{color:var(--accent-dark);font-size:13px;letter-spacing:1px;white-space:nowrap}
+.hero-proof strong{font-family:var(--font-body);font-weight:700}
 .cta{background:linear-gradient(95deg,var(--accent),var(--accent-dark));color:var(--on-accent);font-weight:700;padding:19px 38px;border-radius:99px;text-decoration:none;display:inline-block;box-shadow:0 14px 30px rgba(0,0,0,.15);transition:transform .2s var(--ease);font-size:18px;text-align:center;line-height:1.35}
 .cta:hover{transform:translateY(-3px) scale(1.01)}
 .cta small{display:block;font-size:clamp(11.5px,2.6vw,12.5px);font-weight:600;opacity:.85;margin-bottom:3px}
@@ -110,20 +117,9 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
 .sticky-cta .cta strong{font-size:13.5px;white-space:nowrap}
 .sticky-cta .cta small{display:none}
 @media (min-width:901px){.sticky-cta{display:none}}
-@media (max-width:768px){.cta{width:90%;padding:17px 22px;font-size:16px;margin:0 auto;display:block}header.preview-header h1{font-size:25px}.content{padding:48px 16px}.content > section{margin-bottom:48px}}
+@media (max-width:768px){.cta{width:90%;padding:17px 22px;font-size:16px;margin:0 auto;display:block}header.preview-header h1{font-size:25px}.content{padding:48px 16px}.content > section{margin-bottom:48px}.hero-proof{margin-left:auto;margin-right:auto}}
 @media (max-width:900px){footer{padding-bottom:calc(110px + env(safe-area-inset-bottom)) !important}}
 </style>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17619677378">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17619677378');
-</script>
 
 </head>
 <body>
@@ -138,55 +134,64 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
     <span id="returningMessageEl">We kept your order ready — pick up right where you left off.</span>
   </div>
 <header class="preview-header">
-  <h1>ProstaVive Reviews 2026 💪 💪</h1>
+  <h1>ProstaVive Reviews 2026 💪</h1>
   <p>Unlock Your Ultimate Vitality</p>
 </header>
 <div class="hero" id="hero">
-  <span class="hero-badge">⭐⭐⭐⭐ 4.9/5 · 2,000+ Verified Customers</span>
-  <div class="video-container"><iframe src="https://www.youtube.com/embed/6JWwKXPfcHU?autoplay=1&mute=1&loop=1&playlist=6JWwKXPfcHU&controls=1&showinfo=0&rel=0&modestbranding=1&disablekb=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/0j8l5A4i" data-base-href="https://storeprime.pythonanywhere.com/0j8l5A4i">
-    <small>I WANT MY</small>
-    <strong>PROSTAVIVE REVIEWS 2026 💪 NOW</strong>
+  <span class="hero-badge">⭐⭐⭐⭐ 4.9/5 Average Rating</span>
+  <div class="video-container" id="videoContainer">
+    <img class="video-poster" src="https://uploads.onecompiler.io/43v37pq3s/442h2r79d/3-btl.png" alt="ProstaVive video preview">
+    <div class="play-btn" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#0E1420"/></svg>
+    </div>
+  </div>
+  <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/yzRC9hbm" data-base-href="https://storeprime.pythonanywhere.com/yzRC9hbm">
+    <small>30-DAY MONEY-BACK GUARANTEE</small>
+    <strong>GET PROSTAVIVE NOW</strong>
   </a>
   <div class="trust-row"><span class="trust-item"><span class="ic">🔒</span>Secure Checkout</span><span class="trust-item"><span class="ic">🚚</span>Fast Shipping</span><span class="trust-item"><span class="ic">🛡️</span>30-Day Guarantee</span><span class="trust-item"><span class="ic">🏅</span>Made in USA</span></div>
+  <div class="hero-proof">
+    <span class="stars">★★★★☆</span>
+    <span><strong>David P., Verified Buyer:</strong> "I was waking up 4–5 times a night. After a month on ProstaVive, I'm down to once, sometimes none."</span>
+  </div>
 </div>
 <div class="content">
   <section>
-    <div class="sec-head"><span class="eyebrow">THE FORMULA</span><h2>🌿 Rediscover Your Natural Vitality</h2></div>
-    <p class="intro-text"><strong style="color:var(--accent)">ProstaVive Reviews 2026 💪</strong> is an all-natural formula designed to support her and enhance sexual drive. Made in the USA from a proprietary powerful natural ingredients, it promotes healthy blood flow supports overall vitality, improves energy, sleep quality, skin and inflammatory response.</p>
+    <div class="sec-head"><span class="eyebrow">THE FORMULA</span><h2>🌿 Support for Men's Prostate Health</h2></div>
+    <p class="intro-text"><strong style="color:var(--accent)">ProstaVive</strong> is an all-natural supplement formulated to support men's prostate health and overall vitality. Made in the USA with a blend of natural ingredients, it's designed to support healthy urinary function, energy levels, and restful sleep.</p>
   </section>
   <section>
-    <div class="sec-head"><h2>💥 Exclusive Benefits</h2></div>
-    <div class="cards"><div class="card"><span class="ic">✦</span>✅ Multifactorial Approach: The formula is not based on a single &quot;miracle ingredient&quot;. It combines anti-inflammatory agents, DHT reducers (a testosterone derivative that causes prostate growth) and specific nutrients, offering a more complete approach.</div>
-<div class="card"><span class="ic">✦</span>✅ Focus on &quot;Cleansing&quot; and Tissue Recovery: The manufacturer emphasizes that the formula helps the body &quot;expel&quot; toxins accumulated in the prostate and nourish the organ&#39;s tissues, promoting its long-term health, not just masking the symptoms.</div>
-<div class="card"><span class="ic">✦</span>✅ Ingredients with Good Research History: Components such as Saw Palmetto (Serenoa repens), Pygeum Africanum and Urtica Root are widely studied and recognized by the natural medicine community for prostate health.</div>
-<div class="card"><span class="ic">✦</span>✅ Enhances skin and inflammatory response</div>
+    <div class="sec-head"><h2>💥 Key Benefits</h2></div>
+    <div class="cards"><div class="card"><span class="ic">✦</span>✅ Multi-Ingredient Approach: Rather than relying on a single ingredient, the formula combines botanicals traditionally used for prostate support, along with targeted nutrients, for a more complete approach.</div>
+<div class="card"><span class="ic">✦</span>✅ Supports Tissue Health: The formula is designed to support the body's natural processes and nourish prostate tissue, aiming at long-term wellness rather than a quick fix.</div>
+<div class="card"><span class="ic">✦</span>✅ Ingredients with Research History: Components such as Saw Palmetto (Serenoa repens), Pygeum Africanum and Urtica Root are widely studied within the natural health community for prostate wellness.</div>
+<div class="card"><span class="ic">✦</span>✅ May support skin and a healthy inflammatory response</div>
 <div class="card"><span class="ic">✦</span>✅ 100% natural formula</div></div>
   </section>
-  <section class="product-image-section"><div class="product-image-container"><span class="badge">2026 FORMULA</span><img src="https://uploads.onecompiler.io/43v37pq3s/442h2r79d/3-btl.png" alt="ProstaVive Reviews 2025 💪" class="product-image"></div></section>
+  <section class="product-image-section"><div class="product-image-container"><span class="badge">2026 FORMULA</span><img src="https://uploads.onecompiler.io/43v37pq3s/442h2r79d/3-btl.png" alt="ProstaVive Reviews 2026" class="product-image"></div></section>
   <section>
     <div class="sec-head"><h2>Pros and Cons</h2></div>
     <div class="verdict-panel">
       <span class="verdict-mid">VERDICT</span>
       <div class="verdict-grid">
-        <div class="verdict-col"><h3 style="color:var(--success)">✅ Pros</h3><ul><li><span class="chip yes">✓</span><span>Natural Ingredients: The formula is composed of plant extracts, vitamins and minerals known for their benefits to prostate health, which attracts users looking to avoid synthetic medications.</span></li><li><span class="chip yes">✓</span><span>Symptom Relief: Many users report a significant improvement in quality of life, with reduced frequency and urinary urgency, especially at night, allowing for more peaceful sleep.</span></li><li><span class="chip yes">✓</span><span>Comprehensive Formula: Unlike supplements that focus on just one or two ingredients, Prostavive combines several synergistic compounds, attacking the problem from multiple fronts (inflammation, hormonal balance, nutrition).</span></li><li><span class="chip yes">✓</span><span>No Reports of Serious Side Effects: Most of the reviews analyzed do not mention serious adverse reactions, being generally considered well tolerated. Some isolated reports mention mild digestive discomfort at the beginning of use.</span></li><li><span class="chip yes">✓</span><span>Ease of Use: The capsule presentation is seen as practical and easy to incorporate into the daily routine.</span></li></ul></div>
-        <div class="verdict-col"><h3 style="color:var(--danger)">❌ Cons</h3><ul><li><span class="chip no">✕</span><span>High Price: It is often cited as a high-cost product, especially when compared to other prostate supplements available on the market.</span></li><li><span class="chip no">✕</span><span>Limited Availability: The product is not found in conventional physical pharmacies. Sales are made mostly through the manufacturer&#39;s official website, which can be an obstacle for some consumers.</span></li><li><span class="chip no">✕</span><span>Variable Results: Like any natural supplement, results may vary from person to person. Some users report effects within a few weeks, while others need continuous use for 2-3 months to notice substantial improvements.</span></li><li><span class="chip no">✕</span><span>Does Not Replace the Doctor: It is essential to understand that Prostavive is a supplement, not a medicine. It does not treat, cure or diagnose diseases. Men with diagnosed prostate conditions (such as cancer or advanced BPH) should not use it as a substitute for treatment prescribed by a urologist.</span></li></ul></div>
+        <div class="verdict-col"><h3 style="color:var(--success)">✅ Pros</h3><ul><li><span class="chip yes">✓</span><span>Natural Ingredients: The formula is composed of plant extracts, vitamins and minerals associated with prostate health, appealing to those looking to avoid synthetic medications.</span></li><li><span class="chip yes">✓</span><span>Reported Symptom Relief: Many users report improved quality of life, with less frequent nighttime urination, allowing for more restful sleep.</span></li><li><span class="chip yes">✓</span><span>Comprehensive Formula: Unlike single-ingredient supplements, ProstaVive combines several complementary compounds addressing inflammation, nutrition, and overall prostate support.</span></li><li><span class="chip yes">✓</span><span>Few Reported Adverse Effects: Most reviews we've seen don't mention serious side effects. Some isolated reports mention mild digestive discomfort when starting use.</span></li><li><span class="chip yes">✓</span><span>Ease of Use: The capsule format is easy to incorporate into a daily routine.</span></li></ul></div>
+        <div class="verdict-col"><h3 style="color:var(--danger)">❌ Cons</h3><ul><li><span class="chip no">✕</span><span>Higher Price Point: Often cited as more expensive than other prostate supplements on the market.</span></li><li><span class="chip no">✕</span><span>Limited Availability: Not sold in conventional pharmacies — mostly available through the official website, which can be inconvenient for some.</span></li><li><span class="chip no">✕</span><span>Variable Results: As with any supplement, results vary by individual. Some report noticing changes within weeks; others need 2–3 months of continuous use.</span></li><li><span class="chip no">✕</span><span>Not a Substitute for Medical Care: ProstaVive is a supplement, not a medicine — it does not treat, cure, or diagnose any disease. Anyone with a diagnosed prostate condition should follow their urologist's guidance and not use this in place of prescribed treatment.</span></li></ul></div>
       </div>
     </div>
   </section>
   <section>
     <div class="sec-head"><h2>🌱 Selected Natural Ingredients</h2></div>
-    <div class="cards"><div class="card"><span class="ic">🌱</span><strong>Saw Palmetto (Serenoa repens)</strong><p>The most famous ingredient for prostate health. It helps block the 5-alpha-reductase enzyme, which converts testosterone into DHT, thus reducing the stimulus for gland growth.</p></div>
-<div class="card"><span class="ic">🌱</span><strong>Pygeum Africanum (Prunus africana)</strong><p>Extracted from the bark of an African tree, it is traditionally used to relieve urinary symptoms associated with BPH, acting as an anti-inflammatory.</p></div>
-<div class="card"><span class="ic">🌱</span><strong>Urtica Root (Urtica dioica)</strong><p>Nettle root is often combined with Saw Palmetto for its synergistic effects. It helps improve urinary flow and reduce frequency.</p></div>
-<div class="card"><span class="ic">🌱</span><strong>Pumpkin Seed (Semente de Abóbora)</strong><p>Rich in zinc and phytosterols, it is an essential nutrient for prostate function and helps maintain urinary tract health.</p></div>
-<div class="card"><span class="ic">🌱</span><strong>Zinc, Selenium and Vitamins (E, B6)</strong><p>Crucial minerals and vitamins that act as cofactors in important enzymatic processes for prostate cellular health and as antioxidants.</p></div>
-<div class="card"><span class="ic">🌱</span><strong>Tomato Extract (Lycopene)</strong><p>A potent antioxidant that protects prostate cells from oxidative damage.</p></div></div>
+    <div class="cards"><div class="card"><span class="ic">🌱</span><strong>Saw Palmetto (Serenoa repens)</strong><p>One of the most studied ingredients for prostate health, traditionally used to support healthy hormone balance related to gland size.</p></div>
+<div class="card"><span class="ic">🌱</span><strong>Pygeum Africanum (Prunus africana)</strong><p>Extracted from the bark of an African tree, traditionally used to support urinary comfort.</p></div>
+<div class="card"><span class="ic">🌱</span><strong>Urtica Root (Urtica dioica)</strong><p>Nettle root is often paired with Saw Palmetto for its complementary effects, traditionally used to support healthy urinary flow.</p></div>
+<div class="card"><span class="ic">🌱</span><strong>Pumpkin Seed</strong><p>Rich in zinc and phytosterols, nutrients associated with prostate and urinary tract health.</p></div>
+<div class="card"><span class="ic">🌱</span><strong>Zinc, Selenium and Vitamins (E, B6)</strong><p>Minerals and vitamins that act as cofactors in cellular processes and as antioxidants.</p></div>
+<div class="card"><span class="ic">🌱</span><strong>Tomato Extract (Lycopene)</strong><p>An antioxidant that helps protect cells from oxidative stress.</p></div></div>
   </section>
   <div style="text-align:center">
-    <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/0j8l5A4i" data-base-href="https://storeprime.pythonanywhere.com/0j8l5A4i">
-      <small>I WANT MY</small>
-      <strong>PROSTAVIVE REVIEWS 2026 💪 NOW</strong>
+    <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/yzRC9hbm" data-base-href="https://storeprime.pythonanywhere.com/yzRC9hbm">
+      <small>30-DAY MONEY-BACK GUARANTEE</small>
+      <strong>GET PROSTAVIVE NOW</strong>
     </a>
   </div>
   <section>
@@ -197,7 +202,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782687966294/customer4.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">Michael M.</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"My life had changed. My energy returned. I felt younger and more vibrant than ever."</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"My energy came back, and I feel more like myself again."</div></div>
     </article>
 
     <article class="review-card">
@@ -205,7 +210,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782687958718/homem-sorridente-de-tiro-medio-posando.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">David P.</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★☆</span><div class="quote">"I was waking up 4-5 times a night to use the bathroom. After using ProstaVive for a month, I’m down to once per night, sometimes none! It has truly changed my life."</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★☆</span><div class="quote">"I was waking up 4-5 times a night to use the bathroom. After using ProstaVive for a month, I'm down to once per night, sometimes none."</div></div>
     </article>
 
     <article class="review-card">
@@ -213,7 +218,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782687974830/customer3.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">William R.</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I&#39;ve been using Max Boost for a few weeks now, and I&#39;m honestly amazed at how much it has improved my vitality and energy."</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I've been using ProstaVive for a few weeks now, and I'm honestly surprised at how much better my energy has been."</div></div>
     </article>
 
     <article class="review-card">
@@ -221,7 +226,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782687987053/customer1.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">Jonathan</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"My biggest issue wasn’t just waking up at night, but the constant ‘rushing’ feeling during the day—I couldn’t go to the grocery store without mapping out where the restroom was. After about three weeks on ProstaVive, that sudden urgency practically disappeared. I can finally go for a long drive or watch a full movie at the theater without anxiety. It gave me my freedom back...."</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"My biggest issue wasn't just waking up at night, but the constant 'rushing' feeling during the day. After about three weeks on ProstaVive, that urgency practically disappeared. I can finally go for a long drive or watch a full movie without worrying."</div></div>
     </article>
 
     <article class="review-card">
@@ -229,7 +234,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782687981466/customer2.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">Robert M.</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I was feeling tired all the time... After using Max Boost for a month, my energy levels are through the roof!"</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I was feeling tired all the time. After using ProstaVive for a month, my energy levels are noticeably better."</div></div>
     </article>
 
     <article class="review-card">
@@ -237,22 +242,22 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
         <img src="https://uploads.onecompiler.io/43v37pq3s/1782802273150/customer1.jpg" class="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
         <div><div style="font-weight:700;font-size:14px">Linda S. (bought for her husband)</div><div class="verified">✔ Verified Buyer</div></div>
       </div>
-      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I bought this for my husband after he complained about a weak stream and feeling like his bladder never fully emptied. Within the first month, he noticed a huge difference—his flow is much stronger now, and he doesn’t have to push to go anymore. Best of all, he’s sleeping so much better that his mood during the day has completely changed. No more grogginess or irritability in the mornings. Highly recommend for anyone dealing with these frustrating age-related changes."</div></div>
+      <div style="margin-top:12px"><span style="color:#ffb100;font-size:15px;letter-spacing:1px">★★★★★</span><div class="quote">"I bought this for my husband after he complained about a weak stream. Within the first month he noticed a real difference, and he's sleeping better too. Highly recommend."</div></div>
     </article></div>
     <p style="font-size:12px;color:var(--slate);margin-top:14px;text-align:center">*Results may vary from person to person.</p>
   </section>
   <section>
     <div class="sec-head"><h2>Frequently Asked Questions</h2></div>
-    <details class="faq-item"><summary>What is Prostavive?<span class="plus">+</span></summary><div class="a">Prostavive is a dietary supplement, specially formulated to promote prostate health. It contains a blend of natural ingredients carefully selected to promote overall prostate wellness.</div></details>
-<details class="faq-item"><summary>How do I take Prostavive?<span class="plus">+</span></summary><div class="a">Simply mix one scoop of Prostavive powder with water or your favorite beverage daily. It’s recommended to take it with a meal for optimal absorption. Consistency is key, so aim to take it at the same time every day to establish a routine.</div></details>
-<details class="faq-item"><summary>How fast will I see results?<span class="plus">+</span></summary><div class="a">Most customers report noticeable changes within 2-4 weeks of consistent use.</div></details>
+    <details class="faq-item"><summary>What is ProstaVive?<span class="plus">+</span></summary><div class="a">ProstaVive is a dietary supplement formulated to support prostate health. It contains a blend of natural ingredients selected to support overall prostate wellness.</div></details>
+<details class="faq-item"><summary>How do I take ProstaVive?<span class="plus">+</span></summary><div class="a">Take the recommended number of capsules daily with water, ideally with a meal for optimal absorption. Consistency is key, so try to take it at the same time each day.</div></details>
+<details class="faq-item"><summary>How soon might I notice a difference?<span class="plus">+</span></summary><div class="a">This varies by individual — some customers report noticing changes within a few weeks, while others find it takes longer with consistent use.</div></details>
 <details class="faq-item"><summary>Is shipping discreet?<span class="plus">+</span></summary><div class="a">Yes, every order ships in plain, unbranded packaging.</div></details>
-<details class="faq-item"><summary>What if it doesn&#39;t work for me?<span class="plus">+</span></summary><div class="a">You&#39;re covered by our 30-day money-back guarantee, no questions asked.</div></details>
-<details class="faq-item"><summary>Is it safe to take daily?<span class="plus">+</span></summary><div class="a">Yes, the formula is designed for daily use following the label instructions.</div></details>
+<details class="faq-item"><summary>What if it doesn't work for me?<span class="plus">+</span></summary><div class="a">You're covered by our 30-day money-back guarantee.</div></details>
+<details class="faq-item"><summary>Is it safe to take daily?<span class="plus">+</span></summary><div class="a">The formula is designed for daily use following the label instructions. As with any supplement, check with your doctor first if you take medication or have a diagnosed condition.</div></details>
   </section>
 </div>
 <footer>
-  <p>© 2026 <span class="fname">ProstaVive Reviews 2026 💪</span></p>
+  <p>© 2026 <span class="fname">ProstaVive</span></p>
   <p>
     <a href="privacy/privacy.html">Privacy Policy</a> ·
     <a href="terms.html">Terms</a> ·
@@ -261,8 +266,8 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
   <p class="legal">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
 </footer>
 <div class="sticky-cta" id="stickyCta">
-  <div class="info"><strong>ProstaVive Reviews 2026 💪</strong><span>Limited time offer</span></div>
-  <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/0j8l5A4i" data-base-href="https://storeprime.pythonanywhere.com/0j8l5A4i"><strong>GET IT NOW</strong></a>
+  <div class="info"><strong>ProstaVive</strong><span>30-Day Money-Back Guarantee</span></div>
+  <a class="cta js-buy-link" href="https://storeprime.pythonanywhere.com/0j8l5A4i" data-base-href="https://storeprime.pythonanywhere.com/0j8l5A4i"><strong>GET PROSTAVIVE NOW</strong></a>
 </div>
 
   <div class="cookie-overlay" id="cookieOverlay">
@@ -279,7 +284,7 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
 
   <script>
     (function(){
-      var deadline = new Date("2026-08-18T23:59").getTime();
+      var deadline = new Date("2026-09-08T23:59").getTime();
       var el = document.getElementById('countdownEl');
       function pad(n){ return String(n).padStart(2,'0'); }
       function tick(){
@@ -351,6 +356,21 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
 </script>
 <script>
   (function(){
+    var container = document.getElementById('videoContainer');
+    if(!container) return;
+    container.addEventListener('click', function(){
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/6JWwKXPfcHU?autoplay=1&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1';
+      iframe.setAttribute('frameborder','0');
+      iframe.setAttribute('allow','autoplay; encrypted-media');
+      iframe.setAttribute('allowfullscreen','');
+      container.innerHTML = '';
+      container.appendChild(iframe);
+    }, { once:true });
+  })();
+</script>
+<script>
+  (function(){
     var CONSENT_COOKIE = 'px_consent';
     var DAYS = 60;
     function setCookie(name,value,days){
@@ -374,8 +394,6 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
     if(!alreadyDecided){ overlay.classList.add('show'); }
 
     function activateTrackingNow(){
-      // Re-run the same attribution capture used by the page's tracking system,
-      // so accepting OR declining both confirm/refresh the click-ID + UTM cookie.
       try{
         var TRACK_KEYS = ['gclid','fbclid','ttclid','msclkid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
         var ATTR_COOKIE = 'px_attribution', VISIT_COOKIE = 'px_visited';
@@ -398,9 +416,10 @@ footer .legal{max-width:640px;margin:18px auto 0;font-size:11.5px;line-height:1.
       }catch(e){}
     }
 
+    // NOTE: tracking now only activates on explicit accept, per consent choice.
     function decide(accepted){
       writeStored(CONSENT_COOKIE, accepted ? 'accepted' : 'declined', DAYS);
-      activateTrackingNow();
+      if(accepted){ activateTrackingNow(); }
       overlay.classList.remove('show');
     }
 
